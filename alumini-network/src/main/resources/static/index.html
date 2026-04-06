@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Network</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="page-shell">
+    <header class="topbar">
+        <div class="brand">
+            <div class="brand-mark">A</div>
+            <div>
+                <p class="brand-kicker">Alumni Platform</p>
+                <h1>Alumni Network</h1>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-copy">
+            <p class="section-tag">Dashboard</p>
+            <h2>Manage alumni, jobs, and connections.</h2>
+            <p class="hero-text">
+                This page is connected to your Spring Boot backend and gives you one place to add alumni,
+                post jobs, create connections, and browse the directory.
+            </p>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <p>Alumni</p>
+                <span id="alumniCount">0</span>
+            </div>
+            <div class="stat-card">
+                <p>Jobs</p>
+                <span id="jobCount">0</span>
+            </div>
+            <div class="stat-card">
+                <p>Connections</p>
+                <span id="connectionCount">0</span>
+            </div>
+        </div>
+    </section>
+
+    <main class="dashboard">
+        <div class="panel-grid">
+            <section class="panel" id="register-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-tag">Alumni</p>
+                        <h2>Add Alumni</h2>
+                    </div>
+                </div>
+                <form id="alumniForm" class="form-grid">
+                    <label>
+                        Full Name
+                        <input type="text" name="name" placeholder="Ananya Patil" required>
+                    </label>
+                    <label>
+                        Email
+                        <input type="email" name="email" placeholder="ananya@company.com" required>
+                    </label>
+                    <label>
+                        Password
+                        <input type="password" name="password" placeholder="Create password" required>
+                    </label>
+                    <label>
+                        Company
+                        <input type="text" name="company" placeholder="Company name">
+                    </label>
+                    <label class="full-span">
+                        Skills
+                        <input type="text" name="skills" placeholder="Java, Spring Boot, SQL">
+                    </label>
+                    <label>
+                        Graduation Year
+                        <input type="number" name="graduationYear" min="1900" max="2099" placeholder="2024" required>
+                    </label>
+                    <button type="submit" class="primary-button wide-button">Save Alumni</button>
+                </form>
+                <p class="status-message" id="alumniStatus"></p>
+            </section>
+
+            <section class="panel" id="jobs-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-tag">Jobs</p>
+                        <h2>Post Job</h2>
+                    </div>
+                </div>
+                <form id="jobForm" class="form-grid">
+                    <label>
+                        Job Title
+                        <input type="text" name="title" placeholder="Backend Developer" required>
+                    </label>
+                    <label>
+                        Company
+                        <input type="text" name="company" placeholder="Company name" required>
+                    </label>
+                    <label class="full-span">
+                        Description
+                        <textarea name="description" rows="4" placeholder="Write a short role summary" required></textarea>
+                    </label>
+                    <label>
+                        Posted By Alumni ID
+                        <input type="number" name="postedById" min="1" placeholder="1" required>
+                    </label>
+                    <button type="submit" class="primary-button wide-button">Save Job</button>
+                </form>
+                <p class="status-message" id="jobStatus"></p>
+            </section>
+        </div>
+
+        <div class="panel-grid">
+            <section class="panel" id="connections-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-tag">Connections</p>
+                        <h2>Create Connection</h2>
+                    </div>
+                </div>
+                <form id="connectionForm" class="form-grid compact-grid">
+                    <label>
+                        Alumni 1 ID
+                        <input type="number" name="alumni1Id" min="1" placeholder="1" required>
+                    </label>
+                    <label>
+                        Alumni 2 ID
+                        <input type="number" name="alumni2Id" min="1" placeholder="2" required>
+                    </label>
+                    <button type="submit" class="primary-button wide-button">Save Connection</button>
+                </form>
+                <p class="status-message" id="connectionStatus"></p>
+            </section>
+
+            <section class="panel" id="directory-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-tag">Directory</p>
+                        <h2>Browse Alumni</h2>
+                    </div>
+                </div>
+                <div class="toolbar">
+                    <input id="searchInput" type="search" placeholder="Search by name, company, skill, or year">
+                    <button id="refreshButton" class="secondary-button" type="button">Refresh</button>
+                </div>
+                <div id="alumniList" class="card-list alumni-grid"></div>
+            </section>
+        </div>
+
+        <section class="panel">
+            <div class="section-heading">
+                <div>
+                    <p class="section-tag">Recent Activity</p>
+                    <h2>Jobs and Connections</h2>
+                </div>
+            </div>
+            <div class="split-layout">
+                <div class="activity-column">
+                    <h3>Jobs</h3>
+                    <div id="jobList" class="card-list"></div>
+                </div>
+                <div class="activity-column">
+                    <h3>Connections</h3>
+                    <div id="connectionList" class="card-list"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

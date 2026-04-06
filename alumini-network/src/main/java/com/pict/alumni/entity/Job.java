@@ -1,4 +1,4 @@
-package com.pict.Alumni.entity;
+package com.pict.alumni.entity;
 import com.pict.alumni.entity.Alumni;
 import jakarta.persistence.*;
 @Entity
